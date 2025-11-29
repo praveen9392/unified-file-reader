@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unified-file-reader"
+version = "0.1.0"
+description = "A clean, extensible file reader library supporting CSV, JSON, TXT, XLSX, PDF, and DOCX formats. Developed and tested on Python 3.12.8 (recommended). Other versions within 3.9–3.12 should also work."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name = "Praveenkumar B", email = "bpraveenkumark1@gmail.com"}
+]
+license = {text = "MIT"}
+keywords = ["file-reader", "csv", "json", "pdf", "docx", "xlsx", "clean-architecture"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "pandas>=1.5.0",
+    "openpyxl>=3.10.0",
+    "pypdf>=3.0.0",
+    "python-docx>=0.8.11",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "isort>=5.12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/praveen9392/unified-file-reader"
+Documentation = "https://github.com/praveen9392/unified-file-reader#readme"
+Repository = "https://github.com/praveen9392/unified-file-reader.git"
+
+[tool.setuptools]
+packages = ["unified_file_reader"]
+
+[tool.setuptools.package-data]
+unified_file_reader = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
