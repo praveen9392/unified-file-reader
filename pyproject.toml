@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unified-file-reader"
-version = "0.1.0"
+version = "0.1.1"
 description = "A clean, extensible file reader library supporting CSV, JSON, TXT, XLSX, PDF, and DOCX formats. Developed and tested on Python 3.12.8 (recommended). Other versions within 3.9–3.12 should also work."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -27,7 +27,7 @@ classifiers = [
 
 dependencies = [
     "pandas>=1.5.0",
-    "openpyxl>=3.10.0",
+    "openpyxl>=3.0.0",
     "pypdf>=3.0.0",
     "python-docx>=0.8.11",
 ]
@@ -48,7 +48,7 @@ Documentation = "https://github.com/praveen9392/unified-file-reader#readme"
 Repository = "https://github.com/praveen9392/unified-file-reader.git"
 
 [tool.setuptools]
-packages = ["unified_file_reader"]
+packages = ["unified_file_reader", "unified_file_reader.interfaces", "unified_file_reader.readers", "unified_file_reader.utils", "unified_file_reader.config"]
 
 [tool.setuptools.package-data]
 unified_file_reader = ["py.typed"]
