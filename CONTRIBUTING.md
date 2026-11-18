@@ -20,19 +20,22 @@ cd unified-file-reader
 ### 2. Set Up Development Environment
 ```bash
 # Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Install in development mode with dev dependencies
+# Install in development mode with dev dependencies (including test libraries)
 pip install -e ".[dev]"
 ```
 
 ### 3. Verify Setup
+Run quality checks and tests:
 ```bash
 pytest
+pytest --cov=unified_file_reader
 black --check unified_file_reader tests
 flake8 unified_file_reader tests
 mypy unified_file_reader
+isort --check unified_file_reader tests
 ```
 
 ## Development Workflow

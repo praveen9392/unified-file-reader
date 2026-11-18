@@ -4,10 +4,10 @@ Configuration for supported file formats.
 Centralized metadata about all supported file formats.
 """
 
-from typing import Dict, List
+from typing import Any, Dict, List
 
 # Supported file formats with metadata
-SUPPORTED_FORMATS: Dict[str, Dict[str, any]] = {
+SUPPORTED_FORMATS: Dict[str, Dict[str, Any]] = {
     ".csv": {
         "name": "Comma-Separated Values",
         "description": "Tabular data in CSV format",
@@ -57,7 +57,7 @@ def is_format_supported(extension: str) -> bool:
     return extension.lower() in SUPPORTED_FORMATS
 
 
-def get_format_info(extension: str) -> Dict[str, any]:
+def get_format_info(extension: str) -> Dict[str, Any]:
     """Get metadata for a supported format."""
     ext = extension.lower()
     if ext not in SUPPORTED_FORMATS:

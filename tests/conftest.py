@@ -7,7 +7,6 @@ Provides shared test resources and utilities.
 import json
 import os
 import tempfile
-from pathlib import Path
 
 import pytest
 
@@ -77,8 +76,8 @@ def sample_xlsx_file(temp_dir):
 def sample_pdf_file(temp_dir):
     """Create a sample PDF file."""
     try:
-        from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
+        from reportlab.pdfgen import canvas
 
         pdf_path = os.path.join(temp_dir, "sample.pdf")
         c = canvas.Canvas(pdf_path, pagesize=letter)

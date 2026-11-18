@@ -42,6 +42,7 @@ class ExcelReader(BaseReader):
             df = pd.read_excel(path)
             # Handle NaN values by converting to None
             df = df.where(pd.notna(df), None)
-            return df.to_dict(orient="records")
+            records = df.to_dict(orient="records")
+            return list(records) if isinstance(records, list) else []
         except Exception as e:
             raise Exception(f"Failed to read Excel file: {str(e)}")

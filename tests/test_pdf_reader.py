@@ -46,8 +46,8 @@ class TestPDFReader:
     def test_read_pdf_with_multiple_pages(self, reader, temp_dir):
         """Test reading PDF with multiple pages."""
         try:
-            from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
+            from reportlab.pdfgen import canvas
 
             pdf_file = f"{temp_dir}/multi_page.pdf"
             c = canvas.Canvas(pdf_file, pagesize=letter)
