@@ -65,8 +65,8 @@ class TestExcelReader:
 
     def test_read_xlsx_with_nan_values(self, reader, temp_dir):
         """Test reading XLSX with NaN values."""
-        import pandas as pd
         import numpy as np
+        import pandas as pd
 
         xlsx_file = f"{temp_dir}/with_nan.xlsx"
         data = {

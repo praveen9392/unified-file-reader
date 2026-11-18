@@ -31,9 +31,11 @@ pip install -r requirements.txt
 ### 2. Verify Installation
 ```bash
 pytest
+pytest --cov=unified_file_reader
 black --check unified_file_reader tests
 flake8 unified_file_reader tests
 mypy unified_file_reader
+isort --check unified_file_reader tests
 ```
 
 ## Development Commands
