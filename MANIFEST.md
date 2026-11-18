@@ -360,7 +360,7 @@ All 46 files have been created and are ready for use, deployment, and publishing
 ---
 
 **Project**: Unified File Reader  
-**Version**: 0.1.0  
+**Version**: 0.1.2  
 **Total Files**: 46  
 **Total Size**: ~172 KB  
 **Status**: ✅ Complete  

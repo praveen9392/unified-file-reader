@@ -286,6 +286,17 @@ MIT License - see LICENSE file for details
 
 ## Changelog
 
+### v0.1.2
+- Modernized dev dependencies (`reportlab` for complete PDF testing)
+- Aligned static type hints with strict `mypy` compliance
+- Harmonized Flake8 configuration (`max-line-length = 100`) with Black and isort
+- Added GitHub Pull Request template and `CHANGELOG.md`
+- 100% test pass rate (93 passed, 0 skipped, 0 failed)
+
+### v0.1.1
+- Updated PyPI package version and metadata
+- Enhanced Python 3.12 compatibility
+
 ### v0.1.0 (Initial Release)
 - Initial release with support for CSV, JSON, TXT, XLSX, PDF, DOCX
 - Clean Architecture implementation
