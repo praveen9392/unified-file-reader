@@ -321,7 +321,7 @@ Everything is ready to use. Pick a documentation file above and get started!
 ---
 
 **Project**: Unified File Reader  
-**Version**: 0.1.2  
+**Version**: 0.1.3  
 **Status**: ✅ Production Ready  
 **License**: MIT  
 

@@ -286,6 +286,12 @@ MIT License - see LICENSE file for details
 
 ## Changelog
 
+### v0.1.3
+- Upgraded `pypdf` to `7.1.1` and `pandas` to `3.1.1`
+- Modernized core dependencies in `requirements.txt` to latest stable releases
+- Updated test & QA tooling (`pytest` 9.2.0, `mypy` 2.4.1, `black` 26.10.1)
+- 100% test pass rate maintained (93 passed, 0 skipped, 0 failed)
+
 ### v0.1.2
 - Modernized dev dependencies (`reportlab` for complete PDF testing)
 - Aligned static type hints with strict `mypy` compliance

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-11-18
+
+### Changed
+- Upgraded core dependencies in `requirements.txt`:
+  - `pypdf`: upgraded from `6.4.0` to `7.1.1` (latest stable).
+  - `pandas`: upgraded from `2.3.3` to `3.1.1`.
+  - `reportlab`: upgraded from `4.4.5` to `5.1.0`.
+  - Modernized dev & QA tools (`pytest` 9.2.0, `black` 26.10.1, `flake8` 7.5.0, `mypy` 2.4.1, `isort` 9.0.2).
+- Bumped package version to `0.1.3`.
+
+---
+
 ## [0.1.2] - 2026-11-18
 
 ### Added
