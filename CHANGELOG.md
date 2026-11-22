@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-11-22
+
+### Added
+- Enterprise-grade exception hierarchy following `python-enterprise-exceptions` standard:
+  - Base `ApplicationException` with stable `error_code`, `details`, and `.to_dict()` serialization.
+  - Domain separation with `BusinessException` (`UnsupportedFormatError`, `BusinessValidationException`, `ResourceNotFoundException`).
+  - Infrastructure separation with `InfrastructureException` (`FileReaderException`, `PDFReadException`, `CSVReadException`, `ExcelReadException`, `DOCXReadException`, `JSONReadException`, `TextReadException`).
+- Comprehensive exception unit test suite in `tests/test_enterprise_exceptions.py` (all 100 tests passing).
+- Manual integration test suite in `manual_test/test_all_types.py` benchmarking CSV, JSON, TXT, XLSX, PDF, and DOCX using real-world files.
+
+### Changed
+- Standardized logging across all reader modules using `logger.exception()` and parameterized messages.
+- Implemented proper exception chaining (`raise ... from exc`) to preserve original root cause tracebacks.
+- Ensured 100% backward compatibility for existing code using `ReaderError`, `FileReadError`, `UnsupportedFormatError`, and `json.JSONDecodeError`.
+- Bumped package version to `0.2.0`.
+
+---
+
 ## [0.1.3] - 2026-11-18
 
 ### Changed

@@ -5,12 +5,16 @@ Reads XLSX files and returns data as list of dictionaries.
 Follows Single Responsibility Principle (SRP).
 """
 
+import logging
 from typing import Any, Dict, List
 
 import pandas as pd
 
+from unified_file_reader.exceptions import ExcelReadException
 from unified_file_reader.interfaces.base_reader import BaseReader
 from unified_file_reader.utils.file_utils import ensure_file_exists
+
+logger = logging.getLogger(__name__)
 
 
 class ExcelReader(BaseReader):
@@ -34,7 +38,7 @@ class ExcelReader(BaseReader):
 
         Raises:
             FileNotFoundError: If file does not exist
-            Exception: If file cannot be parsed as Excel
+            ExcelReadException: If file cannot be parsed as Excel
         """
         ensure_file_exists(path)
 
@@ -45,4 +49,5 @@ class ExcelReader(BaseReader):
             records = df.to_dict(orient="records")
             return list(records) if isinstance(records, list) else []
         except Exception as e:
-            raise Exception(f"Failed to read Excel file: {str(e)}")
+            logger.exception("Failed to parse Excel file: %s", path)
+            raise ExcelReadException(f"Failed to read Excel file: {e}", file_path=path) from e

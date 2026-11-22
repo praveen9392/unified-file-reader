@@ -5,10 +5,14 @@ Reads DOCX files and extracts text content.
 Follows Single Responsibility Principle (SRP).
 """
 
+import logging
 from docx import Document
 
+from unified_file_reader.exceptions import DOCXReadException
 from unified_file_reader.interfaces.base_reader import BaseReader
 from unified_file_reader.utils.file_utils import ensure_file_exists
+
+logger = logging.getLogger(__name__)
 
 
 class DOCXReader(BaseReader):
@@ -32,7 +36,7 @@ class DOCXReader(BaseReader):
 
         Raises:
             FileNotFoundError: If file does not exist
-            Exception: If file cannot be parsed as DOCX
+            DOCXReadException: If file cannot be parsed as DOCX
         """
         ensure_file_exists(path)
 
@@ -41,4 +45,5 @@ class DOCXReader(BaseReader):
             paragraphs = [p.text for p in doc.paragraphs if p.text]
             return "\n".join(paragraphs)
         except Exception as e:
-            raise Exception(f"Failed to read DOCX file: {str(e)}")
+            logger.exception("Failed to parse DOCX file: %s", path)
+            raise DOCXReadException(f"Failed to read DOCX file: {e}", file_path=path) from e

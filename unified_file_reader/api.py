@@ -11,7 +11,7 @@ Follows Clean Architecture principles:
 import logging
 from typing import Any
 
-from unified_file_reader.exceptions import UnsupportedFormatError
+from unified_file_reader.exceptions import ApplicationException, UnsupportedFormatError
 from unified_file_reader.registry import get_reader_for_extension
 from unified_file_reader.utils.file_utils import get_extension
 
@@ -60,8 +60,9 @@ def read_file(path: str) -> Any:
         if not reader:
             supported = [".csv", ".json", ".txt", ".xlsx", ".pdf", ".docx"]
             raise UnsupportedFormatError(
-                f"Unsupported file format: {extension}. "
-                f"Supported formats: {', '.join(supported)}"
+                f"Unsupported file format: '{extension}'. "
+                f"Supported formats: {', '.join(supported)}",
+                extension=extension,
             )
 
         # Read file using appropriate reader
@@ -71,9 +72,7 @@ def read_file(path: str) -> Any:
 
         return result
 
-    except UnsupportedFormatError:
-        raise
-    except FileNotFoundError:
+    except (UnsupportedFormatError, FileNotFoundError, ApplicationException):
         raise
     except Exception as e:
         logger.error(f"Error reading file {path}: {str(e)}")
