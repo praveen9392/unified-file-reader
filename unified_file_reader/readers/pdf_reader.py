@@ -5,10 +5,14 @@ Reads PDF files and extracts text content.
 Follows Single Responsibility Principle (SRP).
 """
 
+import logging
 from pypdf import PdfReader
 
+from unified_file_reader.exceptions import PDFReadException
 from unified_file_reader.interfaces.base_reader import BaseReader
 from unified_file_reader.utils.file_utils import ensure_file_exists
+
+logger = logging.getLogger(__name__)
 
 
 class PDFReader(BaseReader):
@@ -32,7 +36,7 @@ class PDFReader(BaseReader):
 
         Raises:
             FileNotFoundError: If file does not exist
-            Exception: If file cannot be parsed as PDF
+            PDFReadException: If file cannot be parsed as PDF
         """
         ensure_file_exists(path)
 
@@ -47,4 +51,5 @@ class PDFReader(BaseReader):
 
             return "\n".join(text_parts)
         except Exception as e:
-            raise Exception(f"Failed to read PDF file: {str(e)}")
+            logger.exception("Failed to parse PDF file: %s", path)
+            raise PDFReadException(f"Failed to read PDF file: {e}", file_path=path) from e

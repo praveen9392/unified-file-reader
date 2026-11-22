@@ -6,8 +6,41 @@ This module provides a unified API for reading multiple file formats
 """
 
 from unified_file_reader.api import read_file
-from unified_file_reader.exceptions import ReaderError, UnsupportedFormatError
+from unified_file_reader.exceptions import (
+    ApplicationException,
+    BusinessException,
+    BusinessValidationException,
+    CSVReadException,
+    DOCXReadException,
+    ExcelReadException,
+    FileReaderException,
+    FileReadError,
+    InfrastructureException,
+    JSONReadException,
+    PDFReadException,
+    ReaderError,
+    ResourceNotFoundException,
+    TextReadException,
+    UnsupportedFormatError,
+)
 
-__version__ = "0.1.3"
+__version__ = "0.2.0"
 __author__ = "Praveen"
-__all__ = ["read_file", "ReaderError", "UnsupportedFormatError"]
+__all__ = [
+    "read_file",
+    "ApplicationException",
+    "BusinessException",
+    "BusinessValidationException",
+    "CSVReadException",
+    "DOCXReadException",
+    "ExcelReadException",
+    "FileReaderException",
+    "FileReadError",
+    "InfrastructureException",
+    "JSONReadException",
+    "PDFReadException",
+    "ReaderError",
+    "ResourceNotFoundException",
+    "TextReadException",
+    "UnsupportedFormatError",
+]

@@ -6,10 +6,14 @@ Follows Single Responsibility Principle (SRP).
 """
 
 import json
+import logging
 from typing import Any
 
+from unified_file_reader.exceptions import JSONReadException
 from unified_file_reader.interfaces.base_reader import BaseReader
 from unified_file_reader.utils.file_utils import ensure_file_exists
+
+logger = logging.getLogger(__name__)
 
 
 class JSONReader(BaseReader):
@@ -33,9 +37,22 @@ class JSONReader(BaseReader):
 
         Raises:
             FileNotFoundError: If file does not exist
-            json.JSONDecodeError: If file is not valid JSON
+            JSONReadException: If file is not valid JSON
+            json.JSONDecodeError: Re-raised as cause of JSONReadException (and inherits JSONReadException)
         """
         ensure_file_exists(path)
 
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except json.JSONDecodeError as e:
+            logger.exception("Invalid JSON format in file: %s", path)
+            raise JSONReadException(
+                message=f"Failed to parse JSON file: {e.msg}",
+                file_path=path,
+                doc=e.doc,
+                pos=e.pos,
+            ) from e
+        except Exception as e:
+            logger.exception("Failed to read JSON file: %s", path)
+            raise JSONReadException(f"Failed to read JSON file: {e}", file_path=path) from e

@@ -54,6 +54,19 @@ pip install -e ".[dev]"
 pip install -r requirements.txt
 ```
 
+## Documentation
+
+Comprehensive documentation organized by topic is available in the [`docs/`](docs/index.md) directory:
+
+- 📋 **[Requirements & Specifications](docs/requirements/overview.md)**: Product goals, functional & non-functional requirements.
+- 🏛️ **[Architecture & Design](docs/architecture/system-overview.md)**: Clean Architecture overview, component diagrams, data flows, and ADRs.
+- ⚙️ **[Technical Design](docs/technical-design/core-design.md)**: Abstract `BaseReader` interface and extending with custom readers.
+- 📖 **[API Reference](docs/api-reference/overview.md)**: Complete signature reference for `read_file()` and registry functions.
+- 🛠️ **[Development Guide](docs/development/setup.md)**: Environment setup, configuration, and developer workflows.
+- 🚢 **[Deployment](docs/deployment/deployment-architecture.md)**: Packaging architecture, PyPI publishing, and release procedures.
+- 🧪 **[Testing Strategy](docs/testing/test-strategy.md)**: Test suite layout, coverage guidelines, and fixture management.
+- ⚠️ **[Known Issues](docs/releases/known-issues.md)**: Current constraints, edge cases, and future roadmap.
+
 ## Quick Start
 
 ```python
@@ -285,6 +298,15 @@ Contributions are welcome! Please:
 MIT License - see LICENSE file for details
 
 ## Changelog
+
+### v0.2.0
+- Enterprise-grade exception handling following clean architecture & SOLID principles
+- Base `ApplicationException` with stable error codes and structured `.to_dict()` serialization
+- Separated `BusinessException` and `InfrastructureException` hierarchies
+- Standardized logging with `logger.exception()` and explicit exception chaining (`raise ... from exc`)
+- 100% backward compatibility for legacy exceptions and error handling
+- 100 passed unit tests with comprehensive test coverage
+- Added `manual_test` integration test suite covering real-world files across all 6 formats
 
 ### v0.1.3
 - Upgraded `pypdf` to `7.1.1` and `pandas` to `3.1.1`

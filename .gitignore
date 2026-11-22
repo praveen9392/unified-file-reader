@@ -133,5 +133,6 @@ dmypy.json
 
 # Project specific
 test_resources/
+manual_test/
 *.bak
 
